@@ -15,7 +15,7 @@ export default class extends WorkerEntrypoint<AuthEnv> {
 	constructor(ctx: ExecutionContext, env: AuthEnv) {
 		super(ctx, env);
 
-		this.database = drizzle(this.env.DB_AUTH);
+		this.database = drizzle(env.DB_AUTH);
 	}
 
 	async fetch() {

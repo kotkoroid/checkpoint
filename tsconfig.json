@@ -7,15 +7,12 @@
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"noEmit": true,
+		"noUncheckedIndexedAccess": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "ESNext"
+		"target": "ESNext",
+		"verbatimModuleSyntax": true,
 	},
-	"exclude": ["./sst.config.ts"],
-	// TODO: I think we can make it work without explicitely declaring it here
-	"include": [
-		"./gateway/worker-configuration.d.ts",
-		"./services/auth/worker-configuration.d.ts"
-	]
+	"exclude": ["./sst.config.ts"]
 }

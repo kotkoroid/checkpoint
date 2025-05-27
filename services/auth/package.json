@@ -7,7 +7,6 @@
 		"dev": "vite serve",
 		"types": "wrangler types --env-interface AuthEnv",
 		"db:generate": "drizzle-kit generate",
-		"db:migrate": "wrangler d1 migrations apply auth-d1",
-		"codecheck": "biome check --write"
+		"db:migrate": "wrangler d1 migrations apply auth-d1"
 	}
 }

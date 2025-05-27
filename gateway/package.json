@@ -6,9 +6,8 @@
 	"scripts": {
 		"dev": "vite serve",
 		"build": "vite build",
-		"preview": "bun run build && vite preview",
+		"preview": "vite build && vite preview",
 		"types": "wrangler types --env-interface GatewayEnv -c wrangler.jsonc -c ../services/auth/wrangler.jsonc",
-		"codecheck": "biome check --write"
 	},
 	"devDependencies": {
 		"hono": "^4.7.10"

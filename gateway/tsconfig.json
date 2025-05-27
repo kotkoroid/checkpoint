@@ -2,7 +2,5 @@
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
 		"types": ["@minerva/gateway/worker-configuration.d.ts", "node"]
-	},
-	// TODO: Verify whether this has to be explicitely defined here
-	"include": ["./src/**/*.ts"]
+	}
 }

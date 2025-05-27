@@ -1,6 +1,12 @@
 {
 	"name": "minerva",
+	"version": "0.0.0",
 	"private": true,
+	"type": "module",
+	"workspaces": [
+		"gateway",
+		"services/*"
+	],
 	"scripts": {
 		"types": "bun --filter '*' types",
 		"typecheck": "tsc",
@@ -17,9 +23,5 @@
 		"vite": "^6.3.5",
 		"wrangler": "^4.15.2",
 		"zod": "^3.24.4"
-	},
-	"workspaces": [
-		"gateway",
-		"services/*"
-	]
+	}
 }

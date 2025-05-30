@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { validator } from 'hono/validator';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 const app = new Hono<{ Bindings: GatewayEnv }>();
 
@@ -13,7 +13,7 @@ app.post(
 	validator('json', (value, c) => {
 		const parsed = z
 			.object({
-				email: z.string().email(),
+				email: z.email(),
 				username: z.string().nonempty(),
 			})
 			.safeParse(value);

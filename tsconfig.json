@@ -1,6 +1,6 @@
 {
- 	"exclude": ["./sst.config.ts"],
- 	"files": [],
+	"exclude": ["./sst.config.ts"],
+	"files": [],
 	"references": [{ "path": "./gateway" }, { "path": "./services/auth" }],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,

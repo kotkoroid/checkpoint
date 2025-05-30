@@ -1,14 +1,13 @@
 {
 	"name": "@minerva/gateway",
-	"private": true,
 	"version": "0.0.0",
+	"private": true,
 	"type": "module",
 	"scripts": {
 		"dev": "vite serve",
 		"build": "vite build",
-		"preview": "bun run build && vite preview",
-		"types": "wrangler types -c wrangler.jsonc -c ../services/auth/wrangler.jsonc",
-		"codecheck": "biome check --write"
+		"preview": "vite build && vite preview",
+		"types": "wrangler types --env-interface GatewayEnv -c wrangler.jsonc -c ../services/auth/wrangler.jsonc"
 	},
 	"devDependencies": {
 		"hono": "^4.7.10"

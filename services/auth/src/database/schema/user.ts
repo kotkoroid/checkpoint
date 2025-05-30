@@ -1,4 +1,4 @@
-import { UserStatus } from '@minerva/auth/src/types/user';
+import type { UserStatus } from '@minerva/auth/src/types/user';
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const user = sqliteTable('user', {

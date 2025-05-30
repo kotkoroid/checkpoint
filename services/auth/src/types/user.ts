@@ -1,5 +1,5 @@
-import * as schema from '@minerva/auth/src/database/schema';
-import { InferInsertModel } from 'drizzle-orm';
+import type * as schema from '@minerva/auth/src/database/schema';
+import type { InferInsertModel } from 'drizzle-orm';
 
 export type UserStatus = 'UNVERIFIED' | 'VERIFIED' | 'BLOCKED';
 

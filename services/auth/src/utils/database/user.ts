@@ -1,7 +1,7 @@
 import * as schema from '@minerva/auth/src/database/schema';
-import { UserInsertType } from '@minerva/auth/src/types/user';
+import type { UserInsertType } from '@minerva/auth/src/types/user';
 import { eq } from 'drizzle-orm';
-import { DrizzleD1Database } from 'drizzle-orm/d1';
+import type { DrizzleD1Database } from 'drizzle-orm/d1';
 
 export const getUserByEmail = async (
 	database: DrizzleD1Database<typeof schema>,

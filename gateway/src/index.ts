@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { validator } from 'hono/validator';
 import { z } from 'zod';
 
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono<{ Bindings: GatewayEnv }>();
 
 app.get('/', async (c) => {
 	return c.text('API is up and running. kthxbye');

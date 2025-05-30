@@ -11,7 +11,7 @@
 		{
 			"binding": "AUTH_SERVICE",
 			"service": "minerva-auth",
-			"entrypoint": "AuthService"
+			"entrypoint": "default"
 		}
 	]
 }

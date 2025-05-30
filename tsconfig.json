@@ -1,6 +1,6 @@
 {
+	"include": ["./*.ts"],
 	"exclude": ["./sst.config.ts"],
-	"files": [],
 	"references": [{ "path": "./gateway" }, { "path": "./services/auth" }],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,
@@ -10,6 +10,7 @@
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"noUncheckedIndexedAccess": true,
+		"outDir": "./tsbuild",
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,

@@ -18,7 +18,7 @@
 		"@types/node": "^22.15.18",
 		"drizzle-kit": "^0.31.1",
 		"drizzle-orm": "^0.43.1",
-		"sst": "^3.14.28",
+		"sst": "^3.17.0",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5",
 		"wrangler": "^4.15.2",

@@ -1,6 +1,10 @@
 {
 	"extends": "../tsconfig.json",
+	"include": ["./src/*.ts"],
+	"references": [{ "path": "../services/auth" }],
 	"compilerOptions": {
+		"composite": true,
+		"outDir": "./tsbuild",
 		"types": ["@minerva/gateway/worker-configuration.d.ts", "node"]
-	}
+	},
 }

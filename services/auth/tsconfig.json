@@ -1,6 +1,9 @@
 {
 	"extends": "../../tsconfig.json",
+	"include": ["./src/*.ts"],
 	"compilerOptions": {
+		"composite": true,
+		"outDir": "./tsbuild",
 		"types": ["@minerva/auth/worker-configuration.d.ts", "node"]
 	}
 }

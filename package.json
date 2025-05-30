@@ -9,7 +9,7 @@
 	],
 	"scripts": {
 		"types": "bun --filter '*' types",
-		"typecheck": "tsc",
+		"typecheck": "tsc -b",
 		"codecheck": "biome check --write"
 	},
 	"devDependencies": {

@@ -1,5 +1,5 @@
 {
- 	"include": ["./*.ts"],
+	"include": ["./*.ts"],
 	"exclude": ["./sst.config.ts"],
 	"references": [{ "path": "./gateway" }, { "path": "./services/auth" }],
 	"compilerOptions": {

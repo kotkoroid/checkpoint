@@ -5,7 +5,10 @@
 			"**",
 			"!bun.lock",
 			"!**/worker-configuration.d.ts",
-			"!**/src/database/migrations"
+			"!**/src/database/migrations",
+			"!**/tsbuild",
+			"!**/*.d.ts",
+			"!**/*.js"
 		]
 	},
 	"vcs": {

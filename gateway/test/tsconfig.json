@@ -1,0 +1,15 @@
+{
+	"extends": "../tsconfig.json",
+	"include": ["./**/*.ts"],
+	"exclude": ["./tsbuild"],
+	"references": [{ "path": "../../services/auth" }],
+	"compilerOptions": {
+		"composite": true,
+		"outDir": "./tsbuild",
+		"types": [
+			"@cloudflare/vitest-pool-workers",
+			"@minerva/gateway/worker-configuration.d.ts",
+			"node"
+		]
+	}
+}

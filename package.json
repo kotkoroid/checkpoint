@@ -13,11 +13,11 @@
 		"codecheck": "biome check --write",
 		"test:all": "vitest",
 		"test:cov": "vitest --coverage",
-		"test:unit:all": "vitest unit",
-		"test:unit:gw": "vitest --project @minerva/gateway unit",
-		"test:unit:auth": "vitest --project @minerva/auth unit",
-		"test:int:all": "vitest integration",
-		"test:int:auth": "vitest --project @minerva/auth integration"
+		"test:unit:all": "vitest test/unit",
+		"test:unit:gw": "vitest --project @minerva/gateway test/unit",
+		"test:unit:auth": "vitest --project @minerva/auth test/unit",
+		"test:int:all": "vitest test/integration",
+		"test:int:auth": "vitest --project @minerva/auth test/integration"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.0.0-beta.5",

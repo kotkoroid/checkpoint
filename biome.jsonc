@@ -6,7 +6,7 @@
 			"!bun.lock",
 			"!**/worker-configuration.d.ts",
 			"!**/src/database/migrations",
-			"!**/tsbuild"
+			"!**/*.d.ts"
 		]
 	},
 	"vcs": {

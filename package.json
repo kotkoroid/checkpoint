@@ -23,7 +23,7 @@
 		"@biomejs/biome": "^2.0.0-beta.5",
 		"@cloudflare/vite-plugin": "^1.3.1",
 		"@cloudflare/vitest-pool-workers": "^0.8.34",
-		"@std/path": "npm:@jsr/std__path",
+		"@std/path": "npm:@jsr/std__path@^1.0.8",
 		"@types/node": "^22.15.27",
 		"@vitest/coverage-istanbul": "~3.1.4",
 		"drizzle-kit": "^0.31.1",

@@ -20,3 +20,9 @@ jobs:
 
       - name: Run codecheck
         run: bun biome ci
+
+      - name: Run unit tests
+        run: bun test:unit:all
+
+      - name: Run integration tests
+        run: bun test:int:all

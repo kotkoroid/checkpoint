@@ -1,7 +1,12 @@
 {
 	"include": ["./*.ts"],
 	"exclude": ["./sst.config.ts"],
-	"references": [{ "path": "./gateway" }, { "path": "./services/auth" }],
+	"references": [
+		{ "path": "./gateway" },
+		{ "path": "./gateway/test" },
+		{ "path": "./services/auth" },
+		{ "path": "./services/auth/test" }
+	],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,
 		"esModuleInterop": true,

@@ -15,7 +15,7 @@
 		"test:cov": "vitest --coverage",
 		"test:unit:all": "vitest test/unit",
 		"test:unit:gw": "vitest --project @minerva/gateway test/unit",
-		"test:unit:auth": "vitest --project @minerva/auth test/unit",
+		"test:unit:auth": "vitest --project @minerva/auth test/unit test/setup",
 		"test:int:all": "vitest test/integration",
 		"test:int:auth": "vitest --project @minerva/auth test/integration"
 	},

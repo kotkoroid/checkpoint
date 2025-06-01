@@ -6,7 +6,8 @@ import { join } from '@std/path';
 
 export default defineWorkersProject({
 	test: {
-		setupFiles: ['./test/setup.ts'],
+		exclude: ['**/tsbuild'],
+		setupFiles: ['./test/setup/database-migrations.ts'],
 		poolOptions: {
 			workers: {
 				wrangler: { configPath: './wrangler.jsonc' },

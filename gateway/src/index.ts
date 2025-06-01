@@ -32,13 +32,11 @@ app.post(
 	async (c) => {
 		const { email, username } = c.req.valid('json');
 
-		const existingUserByEmail = await c.env.AUTH_SERVICE.checkEmailAvailability(
-			{
-				email,
-			},
-		);
+		const emailAvailability = await c.env.AUTH_SERVICE.checkEmailAvailability({
+			email,
+		});
 
-		if (existingUserByEmail) {
+		if (!emailAvailability) {
 			return c.json(
 				{
 					message: 'This email address is already taken.',
@@ -47,12 +45,12 @@ app.post(
 			);
 		}
 
-		const existingUserByUsername =
+		const usernameAvailability =
 			await c.env.AUTH_SERVICE.checkUsernameAvailability({
 				username,
 			});
 
-		if (existingUserByUsername) {
+		if (!usernameAvailability) {
 			return c.json(
 				{
 					message: 'This username is already taken.',

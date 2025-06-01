@@ -1,6 +1,7 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import { randomUUID } from 'node:crypto';
 import type * as schema from '@minerva/auth/src/database/schema';
+import type { UserSelectType } from '@minerva/auth/src/types/user';
 import {
 	createUser,
 	getUserByEmail,
@@ -22,19 +23,29 @@ export default class extends WorkerEntrypoint<AuthEnv> {
 		return new Response('Auth service is up and running. kthxbye');
 	}
 
-	async checkEmailAvailability({ email }: { email: string }) {
+	async checkEmailAvailability({ email }: { email: string }): Promise<boolean> {
 		const user = await getUserByEmail(this.database, email);
 
-		return !!user;
+		return !user;
 	}
 
-	async checkUsernameAvailability({ username }: { username: string }) {
+	async checkUsernameAvailability({
+		username,
+	}: {
+		username: string;
+	}): Promise<boolean> {
 		const user = await getUserByUsername(this.database, username);
 
-		return !!user;
+		return !user;
 	}
 
-	async createUser({ username, email }: { username: string; email: string }) {
+	async createUser({
+		username,
+		email,
+	}: {
+		username: string;
+		email: string;
+	}): Promise<UserSelectType | undefined> {
 		const user = await createUser(this.database, {
 			id: randomUUID(),
 			createdAt: new Date(),

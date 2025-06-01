@@ -2,7 +2,7 @@
 	"$schema": "../node_modules/wrangler/config-schema.json",
 	"name": "minerva-gateway",
 	"main": "./src/index.ts",
-	"compatibility_date": "2025-04-20",
+	"compatibility_date": "2025-05-25",
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1
@@ -11,6 +11,7 @@
 		{
 			"binding": "AUTH_SERVICE",
 			"service": "minerva-auth",
+			// TODO: https://github.com/cloudflare/workers-sdk/pull/9371
 			"entrypoint": "default"
 		}
 	]

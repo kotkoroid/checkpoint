@@ -6,11 +6,10 @@ export default defineConfig({
 		port: 8080,
 	},
 	plugins: [
-		// TODO: https://github.com/cloudflare/workers-sdk/issues/8963
+		// TODO: https://github.com/cloudflare/workers-sdk/issues/9511
 		cloudflare({
-			auxiliaryWorkers: [{ configPath: '../services/auth/wrangler.jsonc' }],
 			persistState: {
-				path: '../services/auth/.wrangler/state',
+				path: '../services/identity/.wrangler/state',
 			},
 		}),
 	],

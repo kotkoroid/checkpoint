@@ -4,8 +4,10 @@
 	"references": [
 		{ "path": "./gateway" },
 		{ "path": "./gateway/test" },
-		{ "path": "./services/auth" },
-		{ "path": "./services/auth/test" }
+		{ "path": "./services/identity" },
+		{ "path": "./services/identity/test" },
+		{ "path": "./services/passport" },
+		{ "path": "./services/passport/test" }
 	],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,

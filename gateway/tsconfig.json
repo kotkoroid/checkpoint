@@ -1,10 +1,13 @@
 {
 	"extends": "../tsconfig.json",
 	"include": ["./src/*.ts"],
-	"references": [{ "path": "../services/auth" }],
+	"references": [
+		{ "path": "../services/identity" },
+		{ "path": "../services/passport" }
+	],
 	"compilerOptions": {
 		"composite": true,
 		"outDir": "./tsbuild",
-		"types": ["@minerva/gateway/worker-configuration.d.ts", "node"]
+		"types": ["@checkpoint/gateway/worker-configuration.d.ts", "node"]
 	}
 }

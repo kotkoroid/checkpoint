@@ -1,0 +1,10 @@
+{
+	"name": "@checkpoint/passport",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite serve",
+		"types": "wrangler types --env-interface PassportEnv"
+	}
+}

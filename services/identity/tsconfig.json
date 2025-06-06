@@ -1,0 +1,9 @@
+{
+	"extends": "../../tsconfig.json",
+	"include": ["./src/*.ts"],
+	"compilerOptions": {
+		"composite": true,
+		"outDir": "./tsbuild",
+		"types": ["@checkpoint/identity/worker-configuration.d.ts", "node"]
+	}
+}

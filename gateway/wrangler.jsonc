@@ -1,6 +1,6 @@
 {
 	"$schema": "../node_modules/wrangler/config-schema.json",
-	"name": "minerva-gateway",
+	"name": "checkpoint-gateway",
 	"main": "./src/index.ts",
 	"compatibility_date": "2025-05-25",
 	"observability": {
@@ -9,10 +9,16 @@
 	},
 	"services": [
 		{
-			"binding": "AUTH_SERVICE",
-			"service": "minerva-auth",
-			// TODO: https://github.com/cloudflare/workers-sdk/pull/9371
-			"entrypoint": "default"
+			"binding": "IDENTITY_SERVICE",
+			"service": "checkpoint-identity-service"
+			// TODO: https://github.com/cloudflare/workers-sdk/issues/9229
+			// "entrypoint": "default"
+		},
+		{
+			"binding": "PASSPORT_SERVICE",
+			"service": "checkpoint-passport-service"
+			// TODO: https://github.com/cloudflare/workers-sdk/issues/9229
+			// "entrypoint": "default"
 		}
 	]
 }

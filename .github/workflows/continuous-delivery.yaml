@@ -25,14 +25,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_DEFAULT_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Deploy - Auth Worker
+      - name: Deploy - Passport Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: "./services/passport"
+
+      - name: Deploy - Identity Worker
         uses: cloudflare/wrangler-action@v3
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           postCommands: |
-            wrangler d1 migrations apply auth-d1 --remote
-          workingDirectory: "./services/auth"
+            wrangler d1 migrations apply checkpoint-identity --remote
+          workingDirectory: "./services/identity"
 
       - name: Build - Gateway Worker
         run: bun run build

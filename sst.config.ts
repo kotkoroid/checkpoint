@@ -11,11 +11,11 @@ export default $config({
 		};
 	},
 	async run() {
-		// Auth D1
-		new sst.cloudflare.D1('authD1', {
+		// Identity D1
+		new sst.cloudflare.D1('identityD1', {
 			transform: {
 				database: {
-					name: 'auth-d1',
+					name: 'checkpoint-identity',
 				},
 			},
 		});

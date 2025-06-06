@@ -1,0 +1,10 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "checkpoint-passport-service",
+	"main": "./src/index.ts",
+	"compatibility_date": "2025-05-25",
+	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 1
+	}
+}

@@ -32,9 +32,10 @@ app.post(
 	async (c) => {
 		const { email, username } = c.req.valid('json');
 
-		const emailAvailability = await c.env.AUTH_SERVICE.checkEmailAvailability({
-			email,
-		});
+		const emailAvailability =
+			await c.env.IDENTITY_SERVICE.checkEmailAvailability({
+				email,
+			});
 
 		if (!emailAvailability) {
 			return c.json(
@@ -46,7 +47,7 @@ app.post(
 		}
 
 		const usernameAvailability =
-			await c.env.AUTH_SERVICE.checkUsernameAvailability({
+			await c.env.IDENTITY_SERVICE.checkUsernameAvailability({
 				username,
 			});
 
@@ -59,7 +60,7 @@ app.post(
 			);
 		}
 
-		await c.env.AUTH_SERVICE.createUser({
+		await c.env.IDENTITY_SERVICE.createUser({
 			username,
 			email,
 		});

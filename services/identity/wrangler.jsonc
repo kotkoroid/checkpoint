@@ -12,7 +12,7 @@
 		{
 			"binding": "DATABASE_IDENTITY",
 			"database_name": "checkpoint-identity",
-			"database_id": "a820a498-1cee-47ff-af35-fd30948cb1ad",
+			"database_id": "e42eb589-a97c-470d-a75f-b58acee533ff",
 			"migrations_dir": "./src/database/migrations"
 		}
 	]

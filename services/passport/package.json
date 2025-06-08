@@ -6,5 +6,8 @@
 	"scripts": {
 		"dev": "vite serve",
 		"types": "wrangler types --env-interface PassportEnv"
+	},
+	"devDependencies": {
+		"@panva/jose": "npm:@jsr/panva__jose@^6.0.11"
 	}
 }

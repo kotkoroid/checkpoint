@@ -1,9 +1,9 @@
 {
 	"extends": "../tsconfig.json",
 	"include": ["./**/*.ts"],
-	"exclude": ["./tsbuild"],
 	"compilerOptions": {
 		"composite": true,
+		"declarationDir": "./tsbuild/types",
 		"outDir": "./tsbuild",
 		"types": [
 			"@cloudflare/vitest-pool-workers",

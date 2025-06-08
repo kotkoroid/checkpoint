@@ -3,6 +3,7 @@
 	"include": ["./src/*.ts"],
 	"compilerOptions": {
 		"composite": true,
+		"declarationDir": "./tsbuild/types",
 		"outDir": "./tsbuild",
 		"types": ["@checkpoint/passport/worker-configuration.d.ts", "node"]
 	}

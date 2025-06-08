@@ -27,7 +27,7 @@ describe('database/user', () => {
 
 				const result = await getUserByEmail(database, email);
 
-				expect(result).toMatchObject({
+				expect(result).toEqual({
 					id: result?.id,
 					createdAt: result?.createdAt,
 					modifiedAt: result?.modifiedAt,
@@ -62,7 +62,7 @@ describe('database/user', () => {
 
 				const result = await getUserByUsername(database, username);
 
-				expect(result).toMatchObject({
+				expect(result).toEqual({
 					id: result?.id,
 					createdAt: result?.createdAt,
 					modifiedAt: result?.modifiedAt,
@@ -93,7 +93,7 @@ describe('database/user', () => {
 
 				const result = await createUser(database, user);
 
-				expect(result).toMatchObject(user);
+				expect(result).toEqual(user);
 
 				const databaseCheck = await database
 					.select()
@@ -105,7 +105,7 @@ describe('database/user', () => {
 						),
 					);
 
-				expect(databaseCheck[0]).toMatchObject(user);
+				expect(databaseCheck[0]).toEqual(user);
 			});
 		});
 	});

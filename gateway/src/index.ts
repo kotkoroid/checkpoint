@@ -5,21 +5,22 @@ import { z } from 'zod/v4';
 const app = new Hono<{ Bindings: GatewayEnv }>();
 
 app.get('/', async (c) => {
-	return c.text('API is up and running. kthxbye');
+	return c.text('Falkara Checkpoint is operating without distruption. kthxbye');
 });
 
 app.post(
 	'/users',
-	validator('json', (value, c) => {
-		const parsed = z
+	validator('json', (value, context) => {
+		const parseResult = z
 			.object({
 				email: z.email(),
-				username: z.string().nonempty(),
+				username: z.string().nonempty().min(3),
+				password: z.string().nonempty().min(8),
 			})
 			.safeParse(value);
 
-		if (!parsed.success) {
-			return c.json(
+		if (!parseResult.success) {
+			return context.json(
 				{
 					message: 'Provided input data are invalid.',
 				},
@@ -27,18 +28,18 @@ app.post(
 			);
 		}
 
-		return parsed.data;
+		return parseResult.data;
 	}),
-	async (c) => {
-		const { email, username } = c.req.valid('json');
+	async (context) => {
+		const { email, username, password } = context.req.valid('json');
 
 		const emailAvailability =
-			await c.env.IDENTITY_SERVICE.checkEmailAvailability({
+			await context.env.IDENTITY_SERVICE.checkEmailAvailability({
 				email,
 			});
 
 		if (!emailAvailability) {
-			return c.json(
+			return context.json(
 				{
 					message: 'This email address is already taken.',
 				},
@@ -47,12 +48,12 @@ app.post(
 		}
 
 		const usernameAvailability =
-			await c.env.IDENTITY_SERVICE.checkUsernameAvailability({
+			await context.env.IDENTITY_SERVICE.checkUsernameAvailability({
 				username,
 			});
 
 		if (!usernameAvailability) {
-			return c.json(
+			return context.json(
 				{
 					message: 'This username is already taken.',
 				},
@@ -60,12 +61,13 @@ app.post(
 			);
 		}
 
-		await c.env.IDENTITY_SERVICE.createUser({
+		await context.env.IDENTITY_SERVICE.createUser({
 			username,
 			email,
+			password,
 		});
 
-		return c.json(
+		return context.json(
 			{
 				message: 'User was successfully registered.',
 			},

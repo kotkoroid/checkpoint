@@ -6,13 +6,15 @@ describe('createUser', () => {
 		it('the input is valid', async () => {
 			const username = 'ClaudiaPina';
 			const email = 'claudiapina@falkara.com';
+			const password = '9hDBwx41RXY@vC8dppV$kCkJ';
 
 			const result = await SELF.createUser({
 				username,
 				email,
+				password,
 			});
 
-			expect(result).toMatchObject({
+			expect(result).toEqual({
 				id: result?.id,
 				createdAt: result?.createdAt,
 				modifiedAt: result?.modifiedAt,

@@ -14,7 +14,7 @@ describe('fixtures/user', () => {
 			it('the input is left for default values', async () => {
 				const result = composeUser({});
 
-				expect(result).toMatchObject({
+				expect(result).toEqual({
 					id: result?.id,
 					createdAt: result?.createdAt,
 					modifiedAt: result?.modifiedAt,
@@ -32,7 +32,7 @@ describe('fixtures/user', () => {
 
 				const result = composeUser({ username, email });
 
-				expect(result).toMatchObject({
+				expect(result).toEqual({
 					id: result?.id,
 					createdAt: result?.createdAt,
 					modifiedAt: result?.modifiedAt,
@@ -63,7 +63,7 @@ describe('fixtures/user', () => {
 						),
 					);
 
-				expect(databaseCheck[0]).toMatchObject({
+				expect(databaseCheck[0]).toEqual({
 					id: databaseCheck[0]?.id,
 					createdAt: databaseCheck[0]?.createdAt,
 					modifiedAt: databaseCheck[0]?.modifiedAt,
@@ -91,7 +91,7 @@ describe('fixtures/user', () => {
 						),
 					);
 
-				expect(databaseCheck[0]).toMatchObject({
+				expect(databaseCheck[0]).toEqual({
 					id: databaseCheck[0]?.id,
 					createdAt: databaseCheck[0]?.createdAt,
 					modifiedAt: databaseCheck[0]?.modifiedAt,

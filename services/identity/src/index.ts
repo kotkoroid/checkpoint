@@ -1,5 +1,4 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
-import { randomUUID } from 'node:crypto';
 import type * as schema from '@checkpoint/identity/src/database/schema';
 import type { UserSelectType } from '@checkpoint/identity/src/types/user';
 import {
@@ -7,6 +6,7 @@ import {
 	getUserByEmail,
 	getUserByUsername,
 } from '@checkpoint/identity/src/utils/database/user';
+import { generatePassword } from '@checkpoint/identity/src/utils/password';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 import { drizzle } from 'drizzle-orm/d1';
 
@@ -42,17 +42,21 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 	async createUser({
 		username,
 		email,
+		password,
 	}: {
 		username: string;
 		email: string;
+		password: string;
 	}): Promise<UserSelectType | undefined> {
+		const passwordHex = generatePassword({ password });
+
 		const user = await createUser(this.database, {
-			id: randomUUID(),
+			id: crypto.randomUUID(),
 			createdAt: new Date(),
 			username,
 			email,
-			password: randomUUID(),
-			salt: randomUUID(),
+			password: passwordHex.key,
+			salt: passwordHex.salt,
 			status: 'UNVERIFIED',
 		});
 

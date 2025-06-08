@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto';
 import * as schema from '@checkpoint/identity/src/database/schema';
 import type {
 	UserInsertType,
@@ -7,7 +6,7 @@ import type {
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 
 export const composeUser = ({
-	id = randomUUID(),
+	id = crypto.randomUUID(),
 	createdAt = new Date(),
 	modifiedAt = null,
 	username = 'AlexiaPutellas',
@@ -42,7 +41,7 @@ export const setupUser = async (
 	values?: Partial<UserInsertType>,
 ) => {
 	const defaultValues: UserInsertType = {
-		id: randomUUID(),
+		id: crypto.randomUUID(),
 		createdAt: new Date(),
 		modifiedAt: null,
 		username: 'AlexiaPutellas',

@@ -30,7 +30,7 @@
 		"@vitest/coverage-istanbul": "~3.2.2",
 		"drizzle-kit": "^0.31.1",
 		"drizzle-orm": "^0.44.1",
-		"sst": "^3.17.0",
+		"sst": "^3.17.4",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5",
 		"vitest": "~3.2.2",

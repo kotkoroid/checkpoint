@@ -10,6 +10,7 @@ export default defineConfig({
 		coverage: {
 			// TODO: Using V8 for code coverage is not yet supported: https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/#coverage
 			provider: 'istanbul',
+			excludeAfterRemap: true,
 			exclude: [
 				...coverageConfigDefaults.exclude,
 				'./*.config.ts',

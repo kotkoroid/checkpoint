@@ -28,7 +28,7 @@
 		"test:int:pass": "vitest --project @checkpoint/passport test/integration"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.0",
+		"@biomejs/biome": "^2.0.0-beta.5",
 		"@cloudflare/vite-plugin": "^1.5.0",
 		"@cloudflare/vitest-pool-workers": "^0.8.41",
 		"@std/path": "npm:@jsr/std__path@^1.0.8",

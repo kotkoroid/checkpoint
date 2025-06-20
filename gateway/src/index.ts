@@ -34,7 +34,7 @@ app.post(
 		const { email, username, password } = context.req.valid('json');
 
 		const emailAvailability =
-			await context.env.IDENTITY_SERVICE.checkEmailAvailability({
+			await context.env.SERVICE_IDENTITY.checkEmailAvailability({
 				email,
 			});
 
@@ -48,7 +48,7 @@ app.post(
 		}
 
 		const usernameAvailability =
-			await context.env.IDENTITY_SERVICE.checkUsernameAvailability({
+			await context.env.SERVICE_IDENTITY.checkUsernameAvailability({
 				username,
 			});
 
@@ -61,7 +61,7 @@ app.post(
 			);
 		}
 
-		await context.env.IDENTITY_SERVICE.createUser({
+		await context.env.SERVICE_IDENTITY.createUser({
 			username,
 			email,
 			password,

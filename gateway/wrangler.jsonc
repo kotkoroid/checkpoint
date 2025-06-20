@@ -9,13 +9,13 @@
 	},
 	"services": [
 		{
-			"binding": "IDENTITY_SERVICE",
+			"binding": "SERVICE_IDENTITY",
 			"service": "checkpoint-identity-service"
 			// TODO: https://github.com/cloudflare/workers-sdk/issues/9229
 			// "entrypoint": "default"
 		},
 		{
-			"binding": "PASSPORT_SERVICE",
+			"binding": "SERVICE_PASSPORT",
 			"service": "checkpoint-passport-service"
 			// TODO: https://github.com/cloudflare/workers-sdk/issues/9229
 			// "entrypoint": "default"

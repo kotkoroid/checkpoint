@@ -7,7 +7,7 @@ import { join } from '@std/path';
 export default defineWorkersProject({
 	test: {
 		exclude: ['**/tsbuild'],
-		setupFiles: ['./test/setup/database-migrations.ts'],
+		setupFiles: ['./test/setup/appply-database-migrations.ts'],
 		poolOptions: {
 			workers: {
 				wrangler: { configPath: './wrangler.jsonc' },

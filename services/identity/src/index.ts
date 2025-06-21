@@ -62,30 +62,4 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 
 		return user;
 	}
-
-	async verifyUser({
-		username,
-		email,
-		password,
-	}: {
-		username: string;
-		email: string;
-		password: string;
-	}): Promise<UserSelectType | undefined> {
-		const user = username
-			? await getUserByUsername(this.database, username)
-			: await getUserByEmail(this.database, email);
-
-		if (!user) {
-			throw new Error('The user does not exist.');
-		}
-
-		const passwordVerified = generatePassword({ password, salt: user.salt });
-
-		if (passwordVerified.key !== user.password) {
-			throw new Error('The password does not match.');
-		}
-
-		return user;
-	}
 }

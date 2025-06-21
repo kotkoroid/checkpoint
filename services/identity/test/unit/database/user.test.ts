@@ -13,100 +13,98 @@ import { and, eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/d1';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-describe('database/user', () => {
-	const database = drizzle(env.DATABASE_IDENTITY, { schema });
+const database = drizzle(env.D1_IDENTITY, { schema });
 
-	describe('getUserByEmail', () => {
-		beforeEach(async () => {
-			await setupUser(database);
-		});
+describe('getUserByEmail', () => {
+	beforeEach(async () => {
+		await setupUser(database);
+	});
 
-		describe('should return a user when', () => {
-			it('a user with the given email exists', async () => {
-				const email = 'alexiaputellas@falkara.com';
+	describe('should return a user when', () => {
+		it('a user with the given email exists', async () => {
+			const email = 'alexiaputellas@falkara.com';
 
-				const result = await getUserByEmail(database, email);
+			const result = await getUserByEmail(database, email);
 
-				expect(result).toEqual({
-					id: result?.id,
-					createdAt: result?.createdAt,
-					modifiedAt: result?.modifiedAt,
-					username: 'AlexiaPutellas',
-					email,
-					password: result?.password,
-					salt: result?.salt,
-					status: 'UNVERIFIED',
-				});
-			});
-		});
-
-		describe('should return undefined when', () => {
-			it('a user with the given email does not exist', async () => {
-				const email = 'stinablackstenius@falkara.com';
-
-				const result = await getUserByEmail(database, email);
-
-				expect(result).toBeUndefined();
+			expect(result).toEqual({
+				id: result?.id,
+				createdAt: result?.createdAt,
+				modifiedAt: result?.modifiedAt,
+				username: 'AlexiaPutellas',
+				email,
+				password: result?.password,
+				salt: result?.salt,
+				status: 'UNVERIFIED',
 			});
 		});
 	});
 
-	describe('getUserByUsername', () => {
-		beforeEach(async () => {
-			await setupUser(database);
+	describe('should return undefined when', () => {
+		it('a user with the given email does not exist', async () => {
+			const email = 'stinablackstenius@falkara.com';
+
+			const result = await getUserByEmail(database, email);
+
+			expect(result).toBeUndefined();
 		});
+	});
+});
 
-		describe('should return a user when', () => {
-			it('a user with the given username exists', async () => {
-				const username = 'AlexiaPutellas';
+describe('getUserByUsername', () => {
+	beforeEach(async () => {
+		await setupUser(database);
+	});
 
-				const result = await getUserByUsername(database, username);
+	describe('should return a user when', () => {
+		it('a user with the given username exists', async () => {
+			const username = 'AlexiaPutellas';
 
-				expect(result).toEqual({
-					id: result?.id,
-					createdAt: result?.createdAt,
-					modifiedAt: result?.modifiedAt,
-					username,
-					email: 'alexiaputellas@falkara.com',
-					password: result?.password,
-					salt: result?.salt,
-					status: 'UNVERIFIED',
-				});
-			});
-		});
+			const result = await getUserByUsername(database, username);
 
-		describe('should return undefined when', () => {
-			it('a user with the given username does not exist', async () => {
-				const username = 'StinaBlackstenius';
-
-				const result = await getUserByUsername(database, username);
-
-				expect(result).toBeUndefined();
+			expect(result).toEqual({
+				id: result?.id,
+				createdAt: result?.createdAt,
+				modifiedAt: result?.modifiedAt,
+				username,
+				email: 'alexiaputellas@falkara.com',
+				password: result?.password,
+				salt: result?.salt,
+				status: 'UNVERIFIED',
 			});
 		});
 	});
 
-	describe('createUser', () => {
-		describe('should return and create a user when', () => {
-			it('the input is valid', async () => {
-				const user = composeUser({});
+	describe('should return undefined when', () => {
+		it('a user with the given username does not exist', async () => {
+			const username = 'StinaBlackstenius';
 
-				const result = await createUser(database, user);
+			const result = await getUserByUsername(database, username);
 
-				expect(result).toEqual(user);
+			expect(result).toBeUndefined();
+		});
+	});
+});
 
-				const databaseCheck = await database
-					.select()
-					.from(schema.user)
-					.where(
-						and(
-							eq(schema.user.username, 'AlexiaPutellas'),
-							eq(schema.user.email, 'alexiaputellas@falkara.com'),
-						),
-					);
+describe('createUser', () => {
+	describe('should return and create a user when', () => {
+		it('the input is valid', async () => {
+			const user = composeUser({});
 
-				expect(databaseCheck[0]).toEqual(user);
-			});
+			const result = await createUser(database, user);
+
+			expect(result).toEqual(user);
+
+			const databaseCheck = await database
+				.select()
+				.from(schema.user)
+				.where(
+					and(
+						eq(schema.user.username, 'AlexiaPutellas'),
+						eq(schema.user.email, 'alexiaputellas@falkara.com'),
+					),
+				);
+
+			expect(databaseCheck[0]).toEqual(user);
 		});
 	});
 });

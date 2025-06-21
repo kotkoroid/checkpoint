@@ -16,7 +16,7 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 	constructor(ctx: ExecutionContext, env: IdentityEnv) {
 		super(ctx, env);
 
-		this.database = drizzle(env.DATABASE_IDENTITY);
+		this.database = drizzle(env.D1_IDENTITY);
 	}
 
 	async fetch() {

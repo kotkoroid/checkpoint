@@ -47,7 +47,7 @@ describe('fixtures/user', () => {
 	});
 
 	describe('setupUser', () => {
-		const database = drizzle(env.DATABASE_IDENTITY, { schema });
+		const database = drizzle(env.D1_IDENTITY, { schema });
 
 		describe('should create a user when', () => {
 			it('the input is left for default values', async () => {

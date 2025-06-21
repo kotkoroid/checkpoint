@@ -5,7 +5,7 @@ import { drizzle } from 'drizzle-orm/d1';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('checkUsernameAvailability', () => {
-	const database = drizzle(env.DATABASE_IDENTITY, { schema });
+	const database = drizzle(env.D1_IDENTITY, { schema });
 
 	beforeEach(async () => {
 		await setupUser(database);

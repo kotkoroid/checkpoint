@@ -3,14 +3,13 @@
 	"name": "checkpoint-identity-service",
 	"main": "./src/index.ts",
 	"compatibility_date": "2025-05-25",
-	"compatibility_flags": ["nodejs_compat"],
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1
 	},
 	"d1_databases": [
 		{
-			"binding": "DATABASE_IDENTITY",
+			"binding": "D1_IDENTITY",
 			"database_name": "checkpoint-identity",
 			"database_id": "e42eb589-a97c-470d-a75f-b58acee533ff",
 			"migrations_dir": "./src/database/migrations"

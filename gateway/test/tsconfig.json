@@ -1,6 +1,7 @@
 {
 	"extends": "../tsconfig.json",
 	"include": ["./**/*.ts"],
+	"exclude": ["./tsbuild"],
 	"references": [
 		{ "path": "../../services/identity" },
 		{ "path": "../../services/passport" }

@@ -22,7 +22,7 @@ jobs:
         run: bun biome ci
 
       - name: Run unit tests
-        run: bun test:unit:all
+        run: bun test:all:unit
 
       - name: Run integration tests
-        run: bun test:int:all
+        run: bun test:all:int

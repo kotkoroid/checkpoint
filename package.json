@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.0.5",
 		"@cloudflare/vite-plugin": "^1.7.2",
-		"@cloudflare/vitest-pool-workers": "^0.8.41",
+		"@cloudflare/vitest-pool-workers": "^0.8.46",
 		"@std/path": "npm:@jsr/std__path@^1.0.8",
 		"@types/node": "^22.15.30",
 		"@vitest/coverage-istanbul": "~3.2.3",

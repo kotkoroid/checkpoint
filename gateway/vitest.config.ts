@@ -7,7 +7,6 @@ export default defineWorkersProject({
 		poolOptions: {
 			workers: {
 				wrangler: { configPath: './wrangler.jsonc' },
-				singleWorker: true,
 				miniflare: {
 					workers: [
 						{

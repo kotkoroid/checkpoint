@@ -38,7 +38,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           postCommands: |
-            wrangler d1 migrations apply checkpoint-identity --remote
+            wrangler d1 migrations apply checkpoint-identity-production --remote
           workingDirectory: "./services/identity"
 
       - name: Build - Gateway Worker

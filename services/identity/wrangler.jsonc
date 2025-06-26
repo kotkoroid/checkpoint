@@ -12,8 +12,20 @@
 		{
 			"binding": "D1_IDENTITY",
 			"database_name": "checkpoint-identity",
-			"database_id": "e42eb589-a97c-470d-a75f-b58acee533ff",
+			"database_id": "00000000-0000-0000-0000-000000000000",
 			"migrations_dir": "./src/database/migrations"
 		}
-	]
+	],
+	"env": {
+		"production": {
+			"d1_databases": [
+				{
+					"binding": "D1_IDENTITY",
+					"database_name": "checkpoint-identity-production",
+					"database_id": "27a0fc33-abc4-4ba9-b0e1-3656250427e3",
+					"migrations_dir": "./src/database/migrations"
+				}
+			]
+		}
+	}
 }

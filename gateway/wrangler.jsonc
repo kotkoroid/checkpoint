@@ -20,5 +20,19 @@
 			// TODO: https://github.com/cloudflare/workers-sdk/issues/9229
 			// "entrypoint": "default"
 		}
-	]
+	],
+	"env": {
+		"production": {
+			"services": [
+				{
+					"binding": "SERVICE_IDENTITY",
+					"service": "checkpoint-identity-service-production"
+				},
+				{
+					"binding": "SERVICE_PASSPORT",
+					"service": "checkpoint-passport-service-production"
+				}
+			]
+		}
+	}
 }

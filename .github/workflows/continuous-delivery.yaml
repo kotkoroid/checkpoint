@@ -30,6 +30,7 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          environment: production
           workingDirectory: "./services/passport"
 
       - name: Deploy - Identity Worker
@@ -39,6 +40,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           postCommands: |
             wrangler d1 migrations apply checkpoint-identity-production --remote
+          environment: production
           workingDirectory: "./services/identity"
 
       - name: Build - Gateway Worker
@@ -50,4 +52,5 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          environment: production
           workingDirectory: "./gateway"

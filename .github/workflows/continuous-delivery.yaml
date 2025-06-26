@@ -43,10 +43,6 @@ jobs:
           environment: production
           workingDirectory: "./services/identity"
 
-      - name: Build - Gateway Worker
-        run: bun run build
-        working-directory: ./gateway
-
       - name: Deploy - Gateway Worker
         uses: cloudflare/wrangler-action@v3
         with:

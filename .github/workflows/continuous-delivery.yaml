@@ -39,7 +39,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           postCommands: |
-            wrangler d1 migrations apply checkpoint-identity-production --remote
+            wrangler d1 migrations apply checkpoint-identity-production --env production --remote
           environment: production
           workingDirectory: "./services/identity"
 

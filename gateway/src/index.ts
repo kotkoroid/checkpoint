@@ -1,14 +1,17 @@
 import observability from '@checkpoint/gateway/src/api/observability';
+import tokens from '@checkpoint/gateway/src/api/tokens';
 import users from '@checkpoint/gateway/src/api/users';
 import { OpenAPIHono } from '@hono/zod-openapi';
 
 const app = new OpenAPIHono<{ Bindings: GatewayEnv }>();
 
-app.route('/v1/observability', observability);
+app.route('/', observability);
 
-app.route('/v1/users', users);
+app.route('/', tokens);
 
-app.doc('/open-api', {
+app.route('/', users);
+
+app.doc('/v1/observability/open-api', {
 	openapi: '3.0.0',
 	info: {
 		version: '1.0.0',

@@ -1,5 +1,8 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import type * as schema from '@checkpoint/identity/src/database/schema';
+import type { CheckEmailAvailabilityInput } from '@checkpoint/identity/src/types/io/check-email-availability';
+import type { CheckUsernameAvailabilityInput } from '@checkpoint/identity/src/types/io/check-username-availability';
+import type { CreateUserInput } from '@checkpoint/identity/src/types/io/create-user';
 import type { UserSelectType } from '@checkpoint/identity/src/types/user';
 import {
 	createUser,
@@ -23,31 +26,31 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 		return new Response('Identity service is up and running. kthxbye');
 	}
 
-	async checkEmailAvailability({ email }: { email: string }): Promise<boolean> {
+	async checkEmailAvailability(
+		input: CheckEmailAvailabilityInput,
+	): Promise<boolean> {
+		const { email } = input;
+
 		const user = await getUserByEmail(this.database, email);
 
 		return !user;
 	}
 
-	async checkUsernameAvailability({
-		username,
-	}: {
-		username: string;
-	}): Promise<boolean> {
+	async checkUsernameAvailability(
+		input: CheckUsernameAvailabilityInput,
+	): Promise<boolean> {
+		const { username } = input;
+
 		const user = await getUserByUsername(this.database, username);
 
 		return !user;
 	}
 
-	async createUser({
-		username,
-		email,
-		password,
-	}: {
-		username: string;
-		email: string;
-		password: string;
-	}): Promise<UserSelectType | undefined> {
+	async createUser(
+		input: CreateUserInput,
+	): Promise<UserSelectType | undefined> {
+		const { email, username, password } = input;
+
 		const passwordHex = generatePassword({ password });
 
 		const user = await createUser(this.database, {

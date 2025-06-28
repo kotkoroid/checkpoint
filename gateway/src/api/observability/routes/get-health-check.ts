@@ -6,7 +6,7 @@ const getHealthCheckResponseBody = z.object({
 
 export const getHealthCheckRoute = createRoute({
 	method: 'get',
-	path: '/v1/healthcheck',
+	path: '/healthcheck',
 	responses: {
 		200: {
 			content: {

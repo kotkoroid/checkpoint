@@ -1,79 +1,19 @@
-import { Hono } from 'hono';
-import { validator } from 'hono/validator';
-import { z } from 'zod/v4';
+import observability from '@checkpoint/gateway/src/api/observability';
+import users from '@checkpoint/gateway/src/api/users';
+import { OpenAPIHono } from '@hono/zod-openapi';
 
-const app = new Hono<{ Bindings: GatewayEnv }>();
+const app = new OpenAPIHono<{ Bindings: GatewayEnv }>();
 
-app.get('/', async (c) => {
-	return c.text('Falkara Checkpoint is operating without distruption. kthxbye');
-});
+app.route('/v1/observability', observability);
 
-app.post(
-	'/users',
-	validator('json', (value, context) => {
-		const parseResult = z
-			.object({
-				email: z.email(),
-				username: z.string().nonempty().min(3),
-				password: z.string().nonempty().min(8),
-			})
-			.safeParse(value);
+app.route('/v1/users', users);
 
-		if (!parseResult.success) {
-			return context.json(
-				{
-					message: 'Provided input data are invalid.',
-				},
-				401,
-			);
-		}
-
-		return parseResult.data;
-	}),
-	async (context) => {
-		const { email, username, password } = context.req.valid('json');
-
-		const emailAvailability =
-			await context.env.SERVICE_IDENTITY.checkEmailAvailability({
-				email,
-			});
-
-		if (!emailAvailability) {
-			return context.json(
-				{
-					message: 'This email address is already taken.',
-				},
-				409,
-			);
-		}
-
-		const usernameAvailability =
-			await context.env.SERVICE_IDENTITY.checkUsernameAvailability({
-				username,
-			});
-
-		if (!usernameAvailability) {
-			return context.json(
-				{
-					message: 'This username is already taken.',
-				},
-				409,
-			);
-		}
-
-		await context.env.SERVICE_IDENTITY.createUser({
-			username,
-			email,
-			password,
-		});
-
-		return context.json(
-			{
-				message: 'User was successfully registered.',
-			},
-			200,
-		);
+app.doc('/open-api', {
+	openapi: '3.0.0',
+	info: {
+		version: '1.0.0',
+		title: 'Checkpoint API',
 	},
-);
+});
 
 export default app;

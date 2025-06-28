@@ -18,5 +18,14 @@ export default $config({
 				},
 			},
 		});
+
+		// Passport
+		new sst.cloudflare.Kv('passportKV', {
+			transform: {
+				namespace: {
+					title: `checkpoint-passport-${$app.stage}`,
+				},
+			},
+		});
 	},
 });

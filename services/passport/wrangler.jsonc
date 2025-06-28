@@ -7,7 +7,20 @@
 		"enabled": true,
 		"head_sampling_rate": 1
 	},
+	"kv_namespaces": [
+		{
+			"binding": "KV_PASSPORT",
+			"id": "00000000000000000000000000000000"
+		}
+	],
 	"env": {
-		"production": {}
+		"production": {
+			"kv_namespaces": [
+				{
+					"binding": "KV_PASSPORT",
+					"id": "f41648deef254142aa6274b7646869e5"
+				}
+			]
+		}
 	}
 }

@@ -42,7 +42,7 @@ const users = new OpenAPIHono<{ Bindings: GatewayEnv }>().openapi(
 
 		return context.json(
 			{
-				message: 'User was successfully registered.',
+				message: 'User was successfully created.',
 			},
 			200,
 		);

@@ -20,6 +20,7 @@ export const createUserRoute = createRoute({
 					schema: createUserRequestBodySchema,
 				},
 			},
+			required: true,
 		},
 	},
 	responses: {

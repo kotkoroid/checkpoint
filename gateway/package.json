@@ -5,8 +5,6 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite serve",
-		"build": "vite build",
-		"preview": "vite build && vite preview",
 		"types": "wrangler types --env-interface GatewayEnv -c wrangler.jsonc -c ../services/identity/wrangler.jsonc -c ../services/passport/wrangler.jsonc"
 	},
 	"devDependencies": {

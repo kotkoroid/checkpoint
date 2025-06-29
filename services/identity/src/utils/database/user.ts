@@ -27,6 +27,27 @@ export const getUserByUsername = async (
 	return users[0];
 };
 
+export const getUserByEmailOrUsername = async (
+	database: DrizzleD1Database<typeof schema>,
+	{
+		email,
+		username,
+	}: {
+		email: string | undefined;
+		username: string | undefined;
+	},
+) => {
+	if (email) {
+		return await getUserByEmail(database, email);
+	}
+
+	if (username) {
+		return await getUserByUsername(database, username);
+	}
+
+	return undefined;
+};
+
 export const createUser = async (
 	database: DrizzleD1Database<typeof schema>,
 	user: UserInsertType,

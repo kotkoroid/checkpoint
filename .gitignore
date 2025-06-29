@@ -3,6 +3,7 @@
 Thumbs.dll
 
 # Environment
+.dev.vars
 .env
 
 # Dependencies

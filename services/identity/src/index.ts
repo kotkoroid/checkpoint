@@ -1,5 +1,6 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import type * as schema from '@checkpoint/identity/src/database/schema';
+import type { AuthenticateUserInput } from '@checkpoint/identity/src/types/io/authenticate-user';
 import type { CheckEmailAvailabilityInput } from '@checkpoint/identity/src/types/io/check-email-availability';
 import type { CheckUsernameAvailabilityInput } from '@checkpoint/identity/src/types/io/check-username-availability';
 import type { CreateUserInput } from '@checkpoint/identity/src/types/io/create-user';
@@ -7,6 +8,7 @@ import type { UserSelectType } from '@checkpoint/identity/src/types/user';
 import {
 	createUser,
 	getUserByEmail,
+	getUserByEmailOrUsername,
 	getUserByUsername,
 } from '@checkpoint/identity/src/utils/database/user';
 import { generatePassword } from '@checkpoint/identity/src/utils/password';
@@ -62,6 +64,29 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 			salt: passwordHex.salt,
 			status: 'UNVERIFIED',
 		});
+
+		return user;
+	}
+
+	async authenticateUser(
+		input: AuthenticateUserInput,
+	): Promise<UserSelectType | undefined> {
+		const { username, email, password } = input;
+
+		const user = await getUserByEmailOrUsername(this.database, {
+			email,
+			username,
+		});
+
+		if (!user) {
+			throw new Error('Invalid credentials.');
+		}
+
+		const passwordVerified = generatePassword({ password, salt: user.salt });
+
+		if (passwordVerified.key !== user.password) {
+			throw new Error('Invalid credentials.');
+		}
 
 		return user;
 	}

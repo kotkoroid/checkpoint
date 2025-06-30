@@ -33,13 +33,13 @@
 		"@cloudflare/vitest-pool-workers": "^0.8.47",
 		"@std/path": "npm:@jsr/std__path@^1.0.8",
 		"@types/node": "^24.0.4",
-		"@vitest/coverage-istanbul": "~3.2.3",
+		"@vitest/coverage-istanbul": "~3.2.4",
 		"drizzle-kit": "^0.31.4",
 		"drizzle-orm": "^0.44.2",
 		"sst": "^3.17.6",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5",
-		"vitest": "~3.2.3",
+		"vitest": "~3.2.4",
 		"wrangler": "^4.20.3",
 		"zod": "^3.25.67"
 	}

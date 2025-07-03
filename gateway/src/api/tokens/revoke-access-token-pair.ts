@@ -1,22 +1,23 @@
+import type { RouteHandler } from '@hono/zod-openapi';
 import { createRoute, z } from '@hono/zod-openapi';
 
-const revokeAccessTokenPairRequestBodySchema = z.object({
+const requestBodySchema = z.object({
 	accessToken: z.jwt(),
 });
 
-const revokeAccessTokenPairResponseBodySchema = z.object({
+const responseBodySchema = z.object({
 	message: z.string(),
 	accessToken: z.jwt(),
 });
 
 export const revokeAccessTokenPairRoute = createRoute({
 	method: 'delete',
-	path: '/v1/tokens',
+	path: '/',
 	request: {
 		body: {
 			content: {
 				'application/json': {
-					schema: revokeAccessTokenPairRequestBodySchema,
+					schema: requestBodySchema,
 				},
 			},
 			required: true,
@@ -26,7 +27,7 @@ export const revokeAccessTokenPairRoute = createRoute({
 		200: {
 			content: {
 				'application/json': {
-					schema: revokeAccessTokenPairResponseBodySchema,
+					schema: responseBodySchema,
 				},
 			},
 			description: 'Revokes the access token and the refresh token.',
@@ -43,3 +44,13 @@ export const revokeAccessTokenPairRoute = createRoute({
 		},
 	},
 });
+
+export const revokeAccessTokenPairHandler: RouteHandler<
+	typeof revokeAccessTokenPairRoute,
+	{ Bindings: GatewayEnv }
+> = async (context) => {
+	return context.json(
+		{ message: 'Method not yet implemented. Come back later.' },
+		501,
+	);
+};

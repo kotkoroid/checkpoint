@@ -1,17 +1,52 @@
-import observability from '@checkpoint/gateway/src/api/observability';
-import tokens from '@checkpoint/gateway/src/api/tokens';
-import users from '@checkpoint/gateway/src/api/users';
+import {
+	getHealthCheckHandler,
+	getHealthCheckRoute,
+} from '@checkpoint/gateway/src/api/observability/get-health-check';
+import {
+	createAccessTokenPairHandler,
+	createAccessTokenPairRoute,
+} from '@checkpoint/gateway/src/api/tokens/create-access-token-pair';
+import {
+	refreshAccessTokenPairHandler,
+	refreshAccessTokenPairRoute,
+} from '@checkpoint/gateway/src/api/tokens/refresh-access-token-pair';
+import {
+	revokeAccessTokenPairHandler,
+	revokeAccessTokenPairRoute,
+} from '@checkpoint/gateway/src/api/tokens/revoke-access-token-pair';
+import {
+	createUserHandler,
+	createUserRoute,
+} from '@checkpoint/gateway/src/api/users/create-user';
 import { OpenAPIHono } from '@hono/zod-openapi';
 
-const app = new OpenAPIHono<{ Bindings: GatewayEnv }>();
+const api = new OpenAPIHono();
 
-app.route('/', observability);
+api.route(
+	'/v1/observability',
+	new OpenAPIHono<{ Bindings: GatewayEnv }>().openapi(
+		getHealthCheckRoute,
+		getHealthCheckHandler,
+	),
+);
 
-app.route('/', tokens);
+api.route(
+	'/v1/tokens',
+	new OpenAPIHono<{ Bindings: GatewayEnv }>()
+		.openapi(createAccessTokenPairRoute, createAccessTokenPairHandler)
+		.openapi(refreshAccessTokenPairRoute, refreshAccessTokenPairHandler)
+		.openapi(revokeAccessTokenPairRoute, revokeAccessTokenPairHandler),
+);
 
-app.route('/', users);
+api.route(
+	'/v1/users',
+	new OpenAPIHono<{ Bindings: GatewayEnv }>().openapi(
+		createUserRoute,
+		createUserHandler,
+	),
+);
 
-app.doc('/v1/observability/open-api', {
+api.doc('/open-api', {
 	openapi: '3.0.0',
 	info: {
 		version: '1.0.0',
@@ -19,4 +54,4 @@ app.doc('/v1/observability/open-api', {
 	},
 });
 
-export default app;
+export default api;

@@ -1,22 +1,23 @@
+import type { RouteHandler } from '@hono/zod-openapi';
 import { createRoute, z } from '@hono/zod-openapi';
 
-const refreshAccessTokenPairRequestBodySchema = z.object({
+const requestBodySchema = z.object({
 	refreshToken: z.jwt(),
 });
 
-const refreshAccessTokenPairResponseBodySchema = z.object({
+const responseBodySchema = z.object({
 	accessToken: z.jwt(),
 	refreshToken: z.jwt(),
 });
 
 export const refreshAccessTokenPairRoute = createRoute({
 	method: 'put',
-	path: '/v1/tokens',
+	path: '/',
 	request: {
 		body: {
 			content: {
 				'application/json': {
-					schema: refreshAccessTokenPairRequestBodySchema,
+					schema: requestBodySchema,
 				},
 			},
 			required: true,
@@ -26,7 +27,7 @@ export const refreshAccessTokenPairRoute = createRoute({
 		200: {
 			content: {
 				'application/json': {
-					schema: refreshAccessTokenPairResponseBodySchema,
+					schema: responseBodySchema,
 				},
 			},
 			description: 'Refreshes the access token and the refresh token.',
@@ -43,3 +44,13 @@ export const refreshAccessTokenPairRoute = createRoute({
 		},
 	},
 });
+
+export const refreshAccessTokenPairHandler: RouteHandler<
+	typeof refreshAccessTokenPairRoute,
+	{ Bindings: GatewayEnv }
+> = async (context) => {
+	return context.json(
+		{ message: 'Method not yet implemented. Come back later.' },
+		501,
+	);
+};

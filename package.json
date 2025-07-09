@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.0.6",
 		"@cloudflare/vite-plugin": "^1.7.5",
-		"@cloudflare/vitest-pool-workers": "^0.8.47",
+		"@cloudflare/vitest-pool-workers": "^0.8.50",
 		"@types/node": "^24.0.4",
 		"@vitest/coverage-istanbul": "~3.2.4",
 		"drizzle-kit": "^0.31.4",

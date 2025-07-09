@@ -6,15 +6,15 @@ export default defineWorkersProject({
 		globalSetup: ['./test/setup/build-services.ts'],
 		poolOptions: {
 			workers: {
-				wrangler: { configPath: './wrangler.jsonc' },
+				singleWorker: true,
 				miniflare: {
 					workers: [
 						{
 							name: 'checkpoint-identity-service',
 							modules: [
 								{
-									type: 'ESModule',
 									path: '../services/identity/dist/index.js',
+									type: 'ESModule',
 								},
 							],
 							compatibilityDate: '2025-05-25',
@@ -24,8 +24,8 @@ export default defineWorkersProject({
 							name: 'checkpoint-passport-service',
 							modules: [
 								{
-									type: 'ESModule',
 									path: '../services/passport/dist/index.js',
+									type: 'ESModule',
 								},
 							],
 							compatibilityDate: '2025-05-25',
@@ -33,6 +33,7 @@ export default defineWorkersProject({
 						},
 					],
 				},
+				wrangler: { configPath: './wrangler.jsonc' },
 			},
 		},
 	},

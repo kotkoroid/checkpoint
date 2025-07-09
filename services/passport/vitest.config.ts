@@ -5,6 +5,7 @@ export default defineWorkersProject({
 		exclude: ['**/tsbuild'],
 		poolOptions: {
 			workers: {
+				singleWorker: true,
 				miniflare: {
 					bindings: {
 						ACCESS_TOKEN_SECRET: 'c46ffe6e-8892-4439-abc4-fa526d58c753',

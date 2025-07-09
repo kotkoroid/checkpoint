@@ -8,12 +8,12 @@ export default defineConfig({
 			'./services/passport/vitest.config.ts',
 		],
 		coverage: {
-			// TODO: Using V8 for code coverage is not yet supported: https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/#coverage
+			// TODO: https://github.com/cloudflare/workerd/issues/2065
 			provider: 'istanbul',
-			excludeAfterRemap: true,
 			exclude: [
 				...coverageConfigDefaults.exclude,
-				'./*.config.ts',
+				'**/*.config.ts',
+				'**/dist',
 				'**/tsbuild',
 			],
 		},

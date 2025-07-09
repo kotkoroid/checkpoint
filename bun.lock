@@ -7,7 +7,6 @@
         "@biomejs/biome": "^2.0.6",
         "@cloudflare/vite-plugin": "^1.7.5",
         "@cloudflare/vitest-pool-workers": "^0.8.47",
-        "@std/path": "npm:@jsr/std__path@^1.0.8",
         "@types/node": "^24.0.4",
         "@vitest/coverage-istanbul": "~3.2.4",
         "drizzle-kit": "^0.31.4",
@@ -286,8 +285,6 @@
     "@rollup/rollup-win32-ia32-msvc": ["@rollup/rollup-win32-ia32-msvc@4.44.0", "", { "os": "win32", "cpu": "ia32" }, "sha512-3XJ0NQtMAXTWFW8FqZKcw3gOQwBtVWP/u8TpHP3CRPXD7Pd6s8lLdH3sHWh8vqKCyyiI8xW5ltJScQmBU9j7WA=="],
 
     "@rollup/rollup-win32-x64-msvc": ["@rollup/rollup-win32-x64-msvc@4.44.0", "", { "os": "win32", "cpu": "x64" }, "sha512-Q2Mgwt+D8hd5FIPUuPDsvPR7Bguza6yTkJxspDGkZj7tBRn2y4KSWYuIXpftFSjBra76TbKerCV7rgFPQrn+wQ=="],
-
-    "@std/path": ["@jsr/std__path@1.1.0", "https://npm.jsr.io/~/11/@jsr/std__path/1.1.0.tgz", {}, "sha512-rnxGg/nJGfDbJO+xIJ9YEzLD7dCzjr3NHShf4dbnlt44WEYNwMjg+TcDO6F2NPHBnn/6iUFwbnNzysrZvyD1Og=="],
 
     "@tsconfig/bun": ["@tsconfig/bun@1.0.7", "", {}, "sha512-udGrGJBNQdXGVulehc1aWT73wkR9wdaGBtB6yL70RJsqwW/yJhIg6ZbRlPOfIUiFNrnBuYLBi9CSmMKfDC7dvA=="],
 

@@ -11,6 +11,7 @@
 		"types": "bun --filter '*' types",
 		"typecheck": "tsc -b",
 		"codecheck": "biome check --write",
+		"dev:be": "wrangler dev --local --persist-to ./.wrangler/state -c ./gateway/wrangler.jsonc -c ./services/identity/wrangler.jsonc -c ./services/passport/wrangler.jsonc",
 		"test:all": "vitest",
 		"test:all:cov": "vitest --coverage",
 		"test:all:unit": "vitest test/unit",
@@ -29,7 +30,6 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.1.2",
-		"@cloudflare/vite-plugin": "^1.9.4",
 		"@cloudflare/vitest-pool-workers": "^0.8.50",
 		"@types/node": "^24.0.4",
 		"@vitest/coverage-istanbul": "~3.2.4",
@@ -37,7 +37,6 @@
 		"drizzle-orm": "^0.44.2",
 		"sst": "^3.17.10",
 		"typescript": "^5.8.3",
-		"vite": "^7.0.5",
 		"vitest": "~3.2.4",
 		"wrangler": "^4.24.0",
 		"zod": "^4.0.5"

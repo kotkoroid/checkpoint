@@ -7,7 +7,7 @@ const responseBody = z.object({
 
 export const getHealthCheckRoute = createRoute({
 	method: 'get',
-	path: '/healthcheck',
+	path: '/health-check',
 	responses: {
 		200: {
 			content: {
@@ -15,7 +15,7 @@ export const getHealthCheckRoute = createRoute({
 					schema: responseBody,
 				},
 			},
-			description: 'Retrieves Checkpoint API v1 health check.',
+			description: 'Retrieves Checkpoint API health check.',
 		},
 	},
 });
@@ -24,5 +24,5 @@ export const getHealthCheckHandler: RouteHandler<
 	typeof getHealthCheckRoute,
 	{ Bindings: GatewayEnv }
 > = async (context) => {
-	return context.json({ message: 'Checkpoint API v1 is up and running!' }, 200);
+	return context.json({ message: 'Checkpoint API is up and running!' }, 200);
 };

@@ -2,16 +2,16 @@ import type { RouteHandler } from '@hono/zod-openapi';
 import { createRoute, z } from '@hono/zod-openapi';
 
 const requestBodySchema = z.object({
-	accessToken: z.jwt(),
+	refreshToken: z.jwt(),
 });
 
 const responseBodySchema = z.object({
-	message: z.string(),
 	accessToken: z.jwt(),
+	refreshToken: z.jwt(),
 });
 
-export const revokeAccessTokenPairRoute = createRoute({
-	method: 'delete',
+export const refreshAuthTokenPairRoute = createRoute({
+	method: 'put',
 	path: '/',
 	request: {
 		body: {
@@ -30,7 +30,7 @@ export const revokeAccessTokenPairRoute = createRoute({
 					schema: responseBodySchema,
 				},
 			},
-			description: 'Revokes the access token and the refresh token.',
+			description: 'Refreshes the access token and the refresh token.',
 		},
 		501: {
 			content: {
@@ -45,8 +45,8 @@ export const revokeAccessTokenPairRoute = createRoute({
 	},
 });
 
-export const revokeAccessTokenPairHandler: RouteHandler<
-	typeof revokeAccessTokenPairRoute,
+export const refreshAuthTokenPairHandler: RouteHandler<
+	typeof refreshAuthTokenPairRoute,
 	{ Bindings: GatewayEnv }
 > = async (context) => {
 	return context.json(

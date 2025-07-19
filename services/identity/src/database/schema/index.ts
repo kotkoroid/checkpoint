@@ -1,1 +1,1 @@
-export * from '@checkpoint/identity/src/database/schema/user';
+export { user } from '@checkpoint/identity/src/database/schema/user';

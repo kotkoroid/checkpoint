@@ -3,17 +3,17 @@ import {
 	getHealthCheckRoute,
 } from '@checkpoint/gateway/src/api/observability/get-health-check';
 import {
-	createAccessTokenPairHandler,
-	createAccessTokenPairRoute,
-} from '@checkpoint/gateway/src/api/tokens/create-access-token-pair';
+	createAuthTokenPairHandler,
+	createAuthTokenPairRoute,
+} from '@checkpoint/gateway/src/api/tokens/create-auth-token-pair';
 import {
-	refreshAccessTokenPairHandler,
-	refreshAccessTokenPairRoute,
-} from '@checkpoint/gateway/src/api/tokens/refresh-access-token-pair';
+	refreshAuthTokenPairHandler,
+	refreshAuthTokenPairRoute,
+} from '@checkpoint/gateway/src/api/tokens/refresh-auth-token-pair';
 import {
-	revokeAccessTokenPairHandler,
-	revokeAccessTokenPairRoute,
-} from '@checkpoint/gateway/src/api/tokens/revoke-access-token-pair';
+	revokeAuthTokenPairHandler,
+	revokeAuthTokenPairRoute,
+} from '@checkpoint/gateway/src/api/tokens/revoke-auth-token-pair';
 import {
 	createUserHandler,
 	createUserRoute,
@@ -33,9 +33,9 @@ api.route(
 api.route(
 	'/v1/tokens',
 	new OpenAPIHono<{ Bindings: GatewayEnv }>()
-		.openapi(createAccessTokenPairRoute, createAccessTokenPairHandler)
-		.openapi(refreshAccessTokenPairRoute, refreshAccessTokenPairHandler)
-		.openapi(revokeAccessTokenPairRoute, revokeAccessTokenPairHandler),
+		.openapi(createAuthTokenPairRoute, createAuthTokenPairHandler)
+		.openapi(refreshAuthTokenPairRoute, refreshAuthTokenPairHandler)
+		.openapi(revokeAuthTokenPairRoute, revokeAuthTokenPairHandler),
 );
 
 api.route(

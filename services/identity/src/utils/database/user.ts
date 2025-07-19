@@ -1,5 +1,5 @@
 import * as schema from '@checkpoint/identity/src/database/schema';
-import type { UserInsertType } from '@checkpoint/identity/src/types/user';
+import type { UserInsertType } from '@checkpoint/identity/src/types/entities/user';
 import { eq } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

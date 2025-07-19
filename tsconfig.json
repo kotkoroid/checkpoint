@@ -11,15 +11,15 @@
 	],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext",
 		"esModuleInterop": true,
 		"exactOptionalPropertyTypes": true,
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"noUncheckedIndexedAccess": true,
 		"outDir": "./tsbuild",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
 		"verbatimModuleSyntax": true
 	}
 }

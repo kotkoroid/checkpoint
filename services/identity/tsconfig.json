@@ -2,8 +2,9 @@
 	"extends": "../../tsconfig.json",
 	"include": ["./src/*.ts"],
 	"compilerOptions": {
+		"allowImportingTsExtensions": true,
 		"composite": true,
-		"declarationDir": "./tsbuild/types",
+		"emitDeclarationOnly": true,
 		"outDir": "./tsbuild",
 		"types": ["@checkpoint/identity/worker-configuration.d.ts", "node"]
 	}

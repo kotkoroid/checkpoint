@@ -8,7 +8,7 @@ import {
 import {
 	composeUser,
 	setupUser,
-} from '@checkpoint/identity/test/setup/fixtures/user';
+} from '@checkpoint/identity/test/setup/fixtures/user.fixture';
 import { and, eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/d1';
 import { beforeEach, describe, expect, it } from 'vitest';

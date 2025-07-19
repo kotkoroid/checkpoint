@@ -1,5 +1,5 @@
 import {
-	composeAccessTokenAudienceClaim,
+	composeAudienceClaim,
 	createAccessToken,
 } from '@checkpoint/passport/src/utils/jwt';
 import { describe, expect, it } from 'vitest';
@@ -10,7 +10,8 @@ describe('createAccessToken', () => {
 		it('the input is valid', async () => {
 			const accessToken = await createAccessToken({
 				userId: crypto.randomUUID(),
-				product: 'MINERVA',
+				audience: 'MINERVA',
+				issueDate: new Date(),
 			});
 
 			expect(z.parse(z.jwt(), accessToken.token)).toBeTruthy();
@@ -22,8 +23,7 @@ describe('createAccessToken', () => {
 describe('composeAccessTokenAudienceClaim', () => {
 	describe('should return an array with Checkpoint and product urls', () => {
 		it('the input is valid', () => {
-			const acessTokenAudienceClaim =
-				composeAccessTokenAudienceClaim('MINERVA');
+			const acessTokenAudienceClaim = composeAudienceClaim('MINERVA');
 
 			expect(z.parse(z.array(z.string()), acessTokenAudienceClaim));
 			expect(acessTokenAudienceClaim.at(0)).toEqual(

@@ -1,8 +1,6 @@
 import * as schema from '@checkpoint/identity/src/database/schema';
-import type {
-	UserInsertType,
-	UserStatus,
-} from '@checkpoint/identity/src/types/user';
+import type { UserInsertType } from '@checkpoint/identity/src/types/entities/user';
+import type { UserStatus } from '@checkpoint/identity/src/types/user';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 
 export const composeUser = ({

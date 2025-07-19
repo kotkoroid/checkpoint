@@ -1,10 +1,13 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import type * as schema from '@checkpoint/identity/src/database/schema';
-import type { AuthenticateUserInput } from '@checkpoint/identity/src/types/io/authenticate-user';
-import type { CheckEmailAvailabilityInput } from '@checkpoint/identity/src/types/io/check-email-availability';
-import type { CheckUsernameAvailabilityInput } from '@checkpoint/identity/src/types/io/check-username-availability';
-import type { CreateUserInput } from '@checkpoint/identity/src/types/io/create-user';
-import type { UserSelectType } from '@checkpoint/identity/src/types/user';
+import type {
+	AuthenticateUserInput,
+	AuthenticateUserOutput,
+} from '@checkpoint/identity/src/types/actions/authenticate-user';
+import type { CheckEmailAvailabilityInput } from '@checkpoint/identity/src/types/actions/check-email-availability';
+import type { CheckUsernameAvailabilityInput } from '@checkpoint/identity/src/types/actions/check-username-availability';
+import type { CreateUserInput } from '@checkpoint/identity/src/types/actions/create-user';
+import type { UserSelectType } from '@checkpoint/identity/src/types/entities/user';
 import {
 	createUser,
 	getUserByEmail,
@@ -70,7 +73,7 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 
 	async authenticateUser(
 		input: AuthenticateUserInput,
-	): Promise<UserSelectType | undefined> {
+	): Promise<AuthenticateUserOutput> {
 		const { username, email, password } = input;
 
 		const user = await getUserByEmailOrUsername(this.database, {
@@ -88,6 +91,6 @@ export default class extends WorkerEntrypoint<IdentityEnv> {
 			throw new Error('Invalid credentials.');
 		}
 
-		return user;
+		return { user };
 	}
 }

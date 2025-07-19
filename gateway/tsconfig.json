@@ -6,8 +6,9 @@
 		{ "path": "../services/passport" }
 	],
 	"compilerOptions": {
+		"allowImportingTsExtensions": true,
 		"composite": true,
-		"declarationDir": "./tsbuild/types",
+		"emitDeclarationOnly": true,
 		"outDir": "./tsbuild",
 		"types": ["@checkpoint/gateway/worker-configuration.d.ts", "node"]
 	}

@@ -3,8 +3,9 @@
 	"include": ["./**/*.ts"],
 	"exclude": ["./tsbuild"],
 	"compilerOptions": {
+		"allowImportingTsExtensions": true,
 		"composite": true,
-		"declarationDir": "./tsbuild/types",
+		"emitDeclarationOnly": true,
 		"outDir": "./tsbuild",
 		"types": [
 			"@cloudflare/vitest-pool-workers",

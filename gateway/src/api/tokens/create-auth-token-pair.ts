@@ -16,7 +16,7 @@ const responseBodySchema = z.object({
 	refreshToken: z.jwt(),
 });
 
-export const createAccessTokenPairRoute = createRoute({
+export const createAuthTokenPairRoute = createRoute({
 	method: 'post',
 	path: '/',
 	request: {
@@ -51,8 +51,8 @@ export const createAccessTokenPairRoute = createRoute({
 	},
 });
 
-export const createAccessTokenPairHandler: RouteHandler<
-	typeof createAccessTokenPairRoute,
+export const createAuthTokenPairHandler: RouteHandler<
+	typeof createAuthTokenPairRoute,
 	{ Bindings: GatewayEnv }
 > = async (context) => {
 	const { email, username, password } = context.req.valid('json');
@@ -69,13 +69,22 @@ export const createAccessTokenPairHandler: RouteHandler<
 		return context.json({ message: 'Invalid credentials.' }, 401);
 	}
 
+	const issueDate = new Date();
+
+	const refreshToken = await context.env.SERVICE_PASSPORT.issueRefreshToken({
+		userId: authenticatedUser.user.id,
+		audience: 'MINERVA',
+		issueDate,
+	});
+
 	const accessToken = await context.env.SERVICE_PASSPORT.issueAccessToken({
-		userId: authenticatedUser.id,
-		product: 'MINERVA',
+		userId: authenticatedUser.user.id,
+		audience: 'MINERVA',
+		issueDate,
 	});
 
 	return context.json(
-		{ accessToken: accessToken.token, refreshToken: '' },
+		{ accessToken: accessToken.token, refreshToken: refreshToken.token },
 		200,
 	);
 };

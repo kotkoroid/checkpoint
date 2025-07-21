@@ -34,7 +34,7 @@
 		"@types/node": "^24.0.4",
 		"@vitest/coverage-istanbul": "~3.2.4",
 		"drizzle-kit": "^0.31.4",
-		"drizzle-orm": "^0.44.2",
+		"drizzle-orm": "^0.44.3",
 		"sst": "^3.17.10",
 		"typescript": "^5.8.3",
 		"vitest": "~3.2.4",

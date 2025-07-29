@@ -30,7 +30,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.1.2",
-		"@cloudflare/vitest-pool-workers": "^0.8.55",
+		"@cloudflare/vitest-pool-workers": "^0.8.57",
 		"@types/node": "^24.1.0",
 		"@vitest/coverage-istanbul": "~3.2.4",
 		"drizzle-kit": "^0.31.4",
